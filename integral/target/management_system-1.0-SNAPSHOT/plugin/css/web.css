@@ -1,0 +1,162 @@
+/* 
+author:林阿三
+time:2019-7-18
+Bebasedon:layui
+Explain:https://www.uo33.cn
+*/
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	background-color: #f2f2f2;
+}
+
+.layui-login {
+	width: 500px;
+	height: auto;
+	margin: 100px auto;
+	border-radius: 4px;
+	padding: 40px 50px;
+	-moz-box-shadow: 1px 1px 6px #D6D6D6;
+	-webkit-box-shadow: 1px 1px 6px #D6D6D6;
+	box-shadow: 1px 1px 6px #D6D6D6;
+	background-color: #FFFFFF;
+}
+
+.layui-top-title {
+	padding: 20px 0;
+	text-align: center;
+}
+
+.layui-top-title img {
+	width: 60px;
+	height: 60px;
+	margin-bottom: 10px;
+}
+
+.layui-top-title>h3 {
+	margin-bottom: 10px;
+	font-weight: 300;
+	font-size: 30px;
+	color: #000;
+}
+
+.layui-top-title>p {
+	font-weight: 300;
+	color: #999;
+}
+
+.layui-login-form {
+	margin-top: 15px;
+}
+
+.layui-login-form .layui-form-item {
+	position: relative;
+	margin-bottom: 20px;
+}
+
+.layui-login-form .layui-form-label {
+	display: inline-block;
+	text-align: left;
+	width: auto;
+	padding: 0;
+	z-index: 1;
+	position: absolute;
+	line-height: 30px;
+	/* top: 5px; */
+	/* 	top: 50%;
+    transform: translateY(-50%); */
+}
+
+.layui-login-form .layui-form-label i {
+	font-size: 20px;
+}
+
+.layui-login-form .layui-input-block {
+	margin-left: 0;
+	width: 100%;
+	display: inline-block;
+}
+
+.layui-login-form .layui-form-code {
+	position: absolute;
+	top: 0;
+	line-height: 38px;
+	padding: 0 10px;
+	right: 0;
+}
+
+.layui-login-form .layui-input-block>input,
+.layui-login-form .layui-input-block .layui-select-title {
+	padding: 0 40px;
+	border: none;
+	font-size: 13px;
+	border-bottom: 2px solid #009688;
+}
+
+.layui-login-form .layui-input-block .layui-unselect {
+	border: none;
+	margin-bottom: 2px;
+	padding-left: 0;
+}
+
+.layui-login-form .layui-input-block .layui-input,
+.layui-select,
+.layui-textarea {
+	height: 38px;
+
+}
+
+.layui-login-form .layui-input-block>input::-webkit-input-placeholder {
+	font-size: 13px;
+}
+
+.layui-login-form .layui-input-block>input::-moz-placeholder {
+	font-size: 13px;
+}
+
+.layui-login-form .layui-input-block .layui-input:focus,
+.layui-textarea:focus {
+	border-color: #009688 !important;
+}
+
+.layui-login-form .layui-input-block .layui-input:hover {
+	border-color: #009688 !important;
+}
+
+.layui-form-checkbox {
+	float: left;
+	margin-right: 0;
+	padding-right: 0;
+}
+
+.layui-form-password {
+	float: right;
+	height: 30px;
+	line-height: 30px;
+	margin-top: 10px;
+}
+
+.layui-form-password a {
+	display: block;
+	height: auto;
+	color: #009688;
+	min-width: 18px;
+	min-height: 18px;
+	font-size: 14px;
+}
+
+@media screen and (max-width:768px) {
+	.layui-login {
+		width: auto;
+		padding: 40px 30px;
+	}
+}
+
+@media screen and (min-width:1024px) and (max-width:1366px) {
+	.layui-login {
+		width: auto;
+	}
+}
