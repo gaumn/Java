@@ -1,14 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+<%--
+  Created by IntelliJ IDEA.
+  User: gaumn
+  Date: 2020/10/9
+  Time: 20:00
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<%
+    String path = request.getRequestURI();
+    String basePath = request.getScheme() + "://"
+            + request.getServerName() + ":" + request.getServerPort()
+            + path;
+%>
+<base href="<%=basePath%>">
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="./img/48.png" type="image/x-icon">
+    <link rel="icon" href="../../img/48.png" type="image/x-icon">
     <title>菜单</title>
-    <link rel="stylesheet" href="../plugin/layui/css/layui.css" media="all">
-    <script src="../plugin/layui/layui.js"></script>
+    <link rel="stylesheet" href="../../plugin/layui/css/layui.css" media="all">
+    <script src="../../plugin/layui/layui.js"></script>
 </head>
 <body class="layui-layout-body">
-<div class="layui-layout-admin">
+
+<div class="layui-layout-admin" >
     <div class="layui-header" >
         <div class="layui-logo">不知道叫啥名</div>
         <ul class="layui-nav layui-layout-left">
@@ -17,8 +31,8 @@
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item"> <a href="javascript:;">
-                <img src="../img/two.jpg" class="layui-nav-img">
-                gaumn
+                <img src="../../img/two.jpg" class="layui-nav-img">
+                贤心
             </a>
                 <dl class="layui-nav-child">
                     <dd><a href="">基本资料</a></dd>
