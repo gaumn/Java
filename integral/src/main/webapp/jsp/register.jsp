@@ -7,6 +7,13 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<%
+    String path = request.getRequestURI();
+    String basePath = request.getScheme() + "://"
+            + request.getServerName() + ":" + request.getServerPort()
+            + path;
+%>
+<base href="<%=basePath%>">
 <head>
     <title>注册页</title>
     <link rel="stylesheet" href="../plugin/layui/css/layui.css" media="all">

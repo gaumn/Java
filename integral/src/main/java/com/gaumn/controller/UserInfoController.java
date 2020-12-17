@@ -30,7 +30,7 @@ public class UserInfoController {
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public String login() throws Exception{
         System.out.println("login get");
-        return "/login.jsp";
+        return "/jsp/login.jsp";
     }
 
 
@@ -53,6 +53,15 @@ public class UserInfoController {
         return model;
     }
 
-
+    @RequestMapping(value = "/register",method = RequestMethod.GET)
+    public String register() throws Exception{
+        System.out.println("login get");
+        return "/jsp/register.jsp";
+    }
+    @RequestMapping(value = "/refuse",method = RequestMethod.GET)
+    public String refuse() throws Exception{
+        System.out.println("login get");
+        return "/jsp/error.jsp";
+    }
 
 }

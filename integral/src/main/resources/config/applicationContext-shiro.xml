@@ -11,7 +11,7 @@
 
         <property name="loginUrl" value="/sysUser/login"></property>
 
-        <property name="unauthorizedUrl" value="/refuse.jsp"></property>
+        <property name="unauthorizedUrl" value="/sysUser/refuse"></property>
 
         <property name="successUrl" value="/sysUser/success"></property>
         <!--过滤器链的配置        -->
@@ -22,8 +22,9 @@
                 <!--允许匿名访问的资源-->
                 /plugin/** = anon
                 /html/** = anon
+                /jsp/** = anon
                 <!--  配置所有资源必须登录后才可访问-->
-                /** =authc
+                /WEB-INF/** =authc
             </value>
         </property>
     </bean>
