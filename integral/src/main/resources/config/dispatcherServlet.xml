@@ -8,17 +8,21 @@
         <!--        springMVC的配置文件-->
 
         <!-- 声名controller注解所在的位置       -->
-<!--        <context:component-scan base-package="com.gaumn.service"/>-->
+        <context:component-scan base-package="com.gaumn.service"/>
         <!--配置视图解析器        -->
-        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-                <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
-                <property name="prefix" value="/WEB-INF/"/>
-                <property name="suffix" value=".jsp"/>
-        </bean>
+<!--        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+<!--                <property name="prefix" value="/WEB-INF/sysUser/"/>-->
+<!--                <property name="suffix" value=".jsp"/>-->
+<!--        </bean>-->
+<!--        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+<!--                <property name="prefix" value="/WEB-INF/sysUser/"/>-->
+<!--                <property name="suffix" value=".jsp"/>-->
+<!--        </bean>-->
         <mvc:annotation-driven />
         <!--        声名注解驱动-->
         <!--放过静态资源-->
         <mvc:default-servlet-handler></mvc:default-servlet-handler>
         <mvc:resources mapping="/*" location="/WEB-INF/, classpath:/ , / "></mvc:resources>
         <context:component-scan base-package="com.gaumn.controller"></context:component-scan>
+
 </beans>

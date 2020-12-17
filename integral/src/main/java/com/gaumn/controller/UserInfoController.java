@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -14,20 +16,21 @@ import java.util.Map;
 @RequestMapping("/sysUser")
 public class UserInfoController {
 
-    @RequestMapping("/success")
+    @RequestMapping(value = "/success")
     @ResponseBody
-    public String success(HttpSession session) throws Exception{
+    public ModelAndView success(HttpSession session) throws Exception{
+        ModelAndView model=new ModelAndView();
         System.out.println("成功 success");
-        Map<String,Object> map = new HashMap<>();
-        map.put("code",0);
-
-        return "main";
+//        Map<String,Object> map = new HashMap<>();
+//        map.put("code",0);
+        model.setViewName("/WEB-INF/sysUser/main.jsp");
+        return model ;
     }
 
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public String login() throws Exception{
         System.out.println("login get");
-        return "login";
+        return "/jsp/login.jsp";
     }
 
 
@@ -39,30 +42,32 @@ public class UserInfoController {
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String,Object> login(HttpServletRequest request) throws Exception{
+    public ModelAndView login(HttpServletRequest request) throws Exception{
         System.out.println("login post");
-
-        Map<String,Object> map = new HashMap<>();
+        ModelAndView model=new ModelAndView();
         System.out.println("认证失败了吧！来我这了吧");
         String exceptionName = request.getAttribute("shiroLoginFailure").toString();
         System.out.println(exceptionName);
-        map.put("code",1);
-        map.put("msg","用户名不正确");
-        System.out.println(map.get("code"));
-        return map;
-//        if (exceptionName.equals(UnknownAccountException.class.getName())){
-//            map.put("code",1);
-//            map.put("msg","用户名不正确");
-//            return map;
-//        }else if(exceptionName.equals(IncorrectCredentialsException.class.getName())){
-//            map.put("code",2);
-//            map.put("msg","密码不正确");
-//            return map;
-//        }
-//        System.out.println("sssss");
-//        return map;
+        model.setViewName("/WEB-INF/sysUser/error.jsp");
+
+        return model;
     }
 
+    @RequestMapping(value = "/register",method = RequestMethod.GET)
+    public String register() throws Exception{
+        System.out.println("login get");
+        return "/jsp/register.jsp";
+    }
+    @RequestMapping(value = "/register",method = RequestMethod.POST)
+    public String registerpost() throws Exception{
+        System.out.println("login get");
 
+        return "/jsp/login.jsp";
+    }
+    @RequestMapping(value = "/refuse",method = RequestMethod.GET)
+    public String refuse() throws Exception{
+        System.out.println("login get");
+        return "/jsp/error.jsp";
+    }
 
 }
