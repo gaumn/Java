@@ -7,6 +7,13 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<%
+    String path = request.getRequestURI();
+    String basePath = request.getScheme() + "://"
+            + request.getServerName() + ":" + request.getServerPort()
+            + path;
+%>
+<base href="<%=basePath%>">
 <head>
     <title>注册页</title>
     <link rel="stylesheet" href="../plugin/layui/css/layui.css" media="all">
@@ -41,7 +48,7 @@
         </div>
         <!-- 表单选项 -->
         <div class="layui-login-form" >
-            <form class="layui-form" id="myForm" method="post" >
+            <form class="layui-form" id="myForm" method="post" action="/sysUser/register" >
                 <!-- 用户名  -->
                 <div class="layui-form-item">
                     <div class="layui-inline" style="width: 100%">
