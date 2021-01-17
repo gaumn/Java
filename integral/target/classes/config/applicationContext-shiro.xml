@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- 基于Form表单的身份验证过滤器 -->
+    <bean id="formAuthenticationFilter" class="org.apache.shiro.web.filter.authc.FormAuthenticationFilter">
+        <!-- 这两个字段，username和password要和表单中定义的username和password字段名称相同，可以更改，但是表单和XML要对应 -->
+        <property name="usernameParam" value="username"/>
+        <property name="passwordParam" value="password"/>
+        <property name="loginUrl" value="/login.jsp"/>
+        <!-- rememberMeParam是rememberMe请求参数名，请求参数是boolean类型，true表示记住我 -->
+        <property name="rememberMeParam" value="rememberMe"/>
+    </bean>
+    <!--shiro的web过滤器-->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"></property>
+
+        <property name="loginUrl" value="/jsp/login.jsp"></property>
+
+        <property name="unauthorizedUrl" value="/sysUser/refuse"></property>
+<!--        <property name="filters">-->
+<!--            <util:map>-->
+<!--                <entry key="authc" value-ref="formAuthenticationFilter"/>-->
+<!--            </util:map>-->
+<!--        </property>-->
+<!--        <property name="successUrl" value="/success"></property>-->
+        <!--过滤器链的配置        -->
+        <property name="filterChainDefinitions">
+            <value>
+                <!--   配置注销过滤器 必须是一个空格-->
+                /logout.do = logout
+                <!--允许匿名访问的资源-->
+                /plugin/** = anon
+                /img/** = anon
+                /jsp/** = anon
+                /User/** = anon
+                /sysUser/refuse = anon
+                /sysUser/login = anon
+                <!--  配置所有资源必须登录后才可访问-->
+                /** = authc
+            </value>
+        </property>
+    </bean>
+    <!--    安全管理器securityManager-->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="customRealm"></property>
+    </bean>
+    <!--    自定义的Realm-->
+    <bean id="customRealm" class="com.gaumn.reamls.customRealm">
+<!--        <property name="credentialsMatcher" ref="credentialsMatcher"></property>-->
+        <property name="userInfoDao" ref="userInfoDao"></property>
+        <!-- 使用credentialsMatcher实现密码验证服务 -->
+        <property name="credentialsMatcher" ref="credentialsMatcher"/>
+        <!-- 是否启用缓存 -->
+        <property name="cachingEnabled" value="true"/>
+        <!-- 是否启用身份验证缓存 -->
+        <property name="authenticationCachingEnabled" value="true"/>
+        <!-- 缓存AuthenticationInfo信息的缓存名称 -->
+        <property name="authenticationCacheName" value="authenticationCache"/>
+        <!-- 是否启用授权缓存，缓存AuthorizationInfo信息 -->
+        <property name="authorizationCachingEnabled" value="true"/>
+        <!-- 缓存AuthorizationInfo信息的缓存名称 -->
+        <property name="authorizationCacheName" value="authorizationCache"/>
+     </bean>
+    <!--    凭证配备器-->
+    <bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+        <!-- 使用Spring构造器注入cacheManager -->
+
+<!--        加密算法-->
+        <property name="hashAlgorithmName" value="md5" />
+<!--        散列次数-->
+        <property name="hashIterations" value="1" />
+    </bean>
+    <!-- Shiro生命周期处理器-->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+</beans>

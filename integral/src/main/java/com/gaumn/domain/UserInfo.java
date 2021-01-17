@@ -9,6 +9,12 @@ public class UserInfo {
     private  String UserName;
     private  String UserPwd;
     private  int locked;
+    private  String address;
+    private  int score;
+    private  int freezingScore;
+    private  String college;
+    private  String clbum;
+    private  String role;
     private  String salt;
 
     public int getId() {
@@ -51,6 +57,54 @@ public class UserInfo {
         this.locked = locked;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getFreezingScore() {
+        return freezingScore;
+    }
+
+    public void setFreezingScore(int freezingScore) {
+        this.freezingScore = freezingScore;
+    }
+
+    public String getCollege() {
+        return college;
+    }
+
+    public void setCollege(String college) {
+        this.college = college;
+    }
+
+    public String getClbum() {
+        return clbum;
+    }
+
+    public void setClbum(String clbum) {
+        this.clbum = clbum;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public String getSalt() {
         return salt;
     }
@@ -67,6 +121,12 @@ public class UserInfo {
                 ", UserName='" + UserName + '\'' +
                 ", UserPwd='" + UserPwd + '\'' +
                 ", locked=" + locked +
+                ", address='" + address + '\'' +
+                ", score=" + score +
+                ", freezingScore=" + freezingScore +
+                ", college='" + college + '\'' +
+                ", clbum='" + clbum + '\'' +
+                ", role='" + role + '\'' +
                 ", salt='" + salt + '\'' +
                 '}';
     }
