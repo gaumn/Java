@@ -50,6 +50,7 @@ public class customRealm extends AuthorizingRealm {
 //        System.out.println("账号："+Principal);
 //        System.out.println("密码匹配结果："+credentials.equals(userInfo.getUserPwd()));
 //        if (userInfo==null)return null;
+
         SimpleAuthenticationInfo authenticationInfo= new SimpleAuthenticationInfo(userInfo,userInfo.getUserPwd(),getName());
         return authenticationInfo;
     }

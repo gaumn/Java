@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class RegisterController {
     @Autowired
     private UserInfoDao userInfoDao;
+
     @RequestMapping(value = "/register",method = RequestMethod.GET)
     public String register() throws Exception{
         System.out.println("login get");
@@ -46,9 +47,10 @@ public class RegisterController {
         //role 设定默认值为普通成员(members)
         // （一共分为两类  管理员 普通成员）
         userInfo.setRole("members");
+        userInfo.setUserPwd(SaltUtils.encoderPassword(userInfo.getUserPwd(),userInfo.getSalt()));
+        userInfoDao.insertRegister(userInfo);
 
         System.out.println("注册界面");
-
         return "/jsp/login.jsp";
     }
 }

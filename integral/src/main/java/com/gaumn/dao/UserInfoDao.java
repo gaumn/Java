@@ -11,5 +11,5 @@ public interface UserInfoDao extends CommonDao<UserInfo,Integer>{
      */
     public  UserInfo getBytName(String t_name);
 //    public  int checkBytName(String t_name);
-    public  UserInfo insertRegister(UserInfo userInfo);
+    public  void insertRegister(UserInfo userInfo);
 }

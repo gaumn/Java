@@ -19,8 +19,10 @@
     </select>
 
     <insert id="insertRegister" parameterType="com.gaumn.domain.UserInfo" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
-        insert into userinfo(t_name,UserName, UserPwd)
-          values(#{t_name},#{UserName},#{UserPwd})
+        insert into userinfo(t_name,UserName, UserPwd,locked,address,
+                            score,freezingScore,college,clbum,role,salt)
+          values(#{t_name},#{UserName},#{UserPwd},#{locked},#{address},
+                 #{score},#{freezingScore},#{college},#{clbum},#{role},#{salt})
     </insert>
 
 
