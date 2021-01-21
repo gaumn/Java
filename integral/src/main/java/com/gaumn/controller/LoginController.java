@@ -32,8 +32,6 @@ public class LoginController {
             //初始化
             Subject subject = SecurityUtils.getSubject();
             UsernamePasswordToken token = new UsernamePasswordToken(username, password);
-
-
             try {
                 //登录，即身份校验，由通过Spring注入的UserRealm会自动校验输入的用户名和密码在数据库中是否有对应的值
                 subject.login(token);

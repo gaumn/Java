@@ -3,6 +3,7 @@ package com.gaumn.controller;
 import com.gaumn.dao.UserInfoDao;
 import com.gaumn.domain.UserInfo;
 import com.gaumn.utils.SaltUtils;
+import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,15 +42,15 @@ public class RegisterController {
         // freezingScore=0, college='时代的',
         // clbum='对对对', role='null'}
         //salt是一个随机生成数
-        userInfo.setSalt(SaltUtils.getSalt(1));
+        userInfo.setSalt(SaltUtils.getSalt((int)(Math.random()*50)+1));
+        ByteSource salt =ByteSource.Util.bytes(userInfo.getSalt());
         //score 设定默认值为100
         userInfo.setScore(100);
         //role 设定默认值为普通成员(members)
         // （一共分为两类  管理员 普通成员）
-        userInfo.setRole("members");
-        userInfo.setUserPwd(SaltUtils.encoderPassword(userInfo.getUserPwd(),userInfo.getSalt()));
+        userInfo.setRole("普通成员");
+        userInfo.setUserPwd(SaltUtils.encoderPassword(userInfo.getUserPwd(),salt));
         userInfoDao.insertRegister(userInfo);
-
         System.out.println("注册界面");
         return "/jsp/login.jsp";
     }

@@ -32,7 +32,7 @@ public class SaltUtils {
      * @param salt 盐值
      * @return 加密后的摘要
      */
-    public static String encoderPassword(String pass,String salt){
+    public static String encoderPassword(String pass,Object salt){
         Object object=new SimpleHash(MD5_HASH,pass,salt,HASH_ITERATIONS);
         return object.toString();
     }
