@@ -39,7 +39,7 @@
                     <dd><a href="">安全设置</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="">退出</a></li>
+            <li class="layui-nav-item"><a href="/integral/logout.do">退出</a></li>
         </ul>
     </div>
     <div class="layui-side layui-bg-black">
